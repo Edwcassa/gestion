@@ -1,0 +1,59 @@
+:root {
+  --navbar-bg: #ffffff;
+  /*#6100d4*/
+  --sidebar-bg: #091322;
+  /*#92c46b*/
+  --sidebar-links-bg: #162349;
+  /*#92c46b*/
+  --txt-color-nav: #000;
+  --txt-color-side: #ccc;
+  --txt-color-side-active: #fff;
+  --txt-white: #fff;
+  --hover-side: #1179f4;
+  --hover-color-txt: #1179f4;
+
+  --main-color: #3a9efb;
+  --second-bg: #ffffff;
+  --second-color: #62b4ff;
+  --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  --border-radius: 15px;
+  /* --topnav-height: 110px; */
+  --transition-cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  letter-spacing: 0.7px;
+  height: 100vh;
+  width: 100vw;
+  width: 100%;
+  margin: auto;
+
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover {
+  color: var(--main-color);
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  color: var(--txt-color);
+}
+
+ul {
+  list-style-type: none;
+}

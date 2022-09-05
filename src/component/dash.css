@@ -1,0 +1,138 @@
+.sidebar {
+  /* border: 5px solid orange; */
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
+  background-color: var(--sidebar-bg);
+  width: 19rem;
+  border-radius: 30px;
+  height: 95%;
+  overflow: hidden;
+}
+
+.sidebar__logo {
+  padding-top: 20px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__logo > img {
+  height: 150px;
+}
+
+.sidebar .user_name p {
+  font-size: 20px;
+  margin-top: 5px;
+  /* border: 1px solid yellow; */
+  text-align: center;
+  color: white;
+}
+.sidebar .user_carga p {
+  font-weight: 600;
+  background-color: #f4ad2f;
+  margin: 5px 50px;
+  padding: 5px;
+  border-radius: 20px;
+  /* border: 3px solid palevioletred; */
+  color: black;
+  text-align: center;
+}
+
+.sidebar__links {
+  /* border: 12px solid yellow; */
+  margin-top: 25px;
+  /* width: 100%; */
+  height: 100%;
+  background-color: var(--sidebar-links-bg);
+  border-radius: 30px;
+  overflow-y: auto;
+}
+
+.sidebar__links a {
+  /* border: 1px solid greenyellow; */
+  display: block;
+  text-decoration: none;
+  padding: 15px 30px;
+  color: var(--txt-color-side);
+}
+
+.sidebar__links a.active {
+  color: var(--txt-color-side-active);
+  font-weight: 700;
+  /* background-color: greenyellow; */
+}
+
+.sidebar__links a span {
+  margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+.flex {
+  /* border: 5px solid palevioletred; */
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+}
+.contenedor {
+  /* border: 5px solid green;  */
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+}
+.content {
+  width: 100%;
+}
+.content {
+  max-width: 100%;
+  height: 98%;
+  background-color: #ffffff;
+  padding-left: 20px;
+  overflow: auto;
+}
+
+
+
+
+
+
+
+
+.navbar-contenido {
+  /* border: 5px solid orange; */
+  background-color: var(--navbar-bg);
+  padding: 15px;
+  color: var(--txt-color-nav);
+  /* position: fixed !important; */
+  /* min-height: 70px; */
+  /* width: 100%; */
+  /* padding-left: 20%; */
+  height: 100px;
+  width: 100%;
+}
+
+.navContent {
+  /* margin-left: 16rem; */
+  display: flex;
+  /* flex-direction: row-reverse; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* .user_name {
+  padding: 0 20px;
+}
+
+.user_carga {
+  padding: 0 20px;
+} */
+
+

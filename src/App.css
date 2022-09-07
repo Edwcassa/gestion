@@ -57,3 +57,13 @@ button {
 ul {
   list-style-type: none;
 }
+
+.background_login {
+  background: rgba(0, 0, 0, 0.5) url('https://i.postimg.cc/2STzvB59/erika-fletcher-MZxqc6n9q-Cw-unsplash-1.webp');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: darken;
+
+}

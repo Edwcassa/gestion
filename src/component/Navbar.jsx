@@ -1,21 +1,27 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useAuth from '../auth/UseAuth'
+import { deleteUserLocal } from '../utils/user'
 
 export default function Navbar() {
 
   const [active, setActive] = useState(true)
   const [active2, setActive2] = useState(false)
 
+  const navigate = useNavigate()
+
   const change = () => {
-    // alert('ss')
     setActive(!active)
     setActive2(!active2)
   }
 
-
   const { user, setUser } = useAuth()
-  console.log(user)
+
+  const logout = () => {
+    deleteUserLocal()
+    setUser(null)
+  }
 
   return (
     <div className="navbar-contenido">
@@ -32,10 +38,10 @@ export default function Navbar() {
         <div>
           {
             !user ?
-              <button onClick={() => setUser({ 'id': 1, 'name': 'jaen' })} className="btn btn-link btn-lg">
+              <button onClick={() => navigate('/login')} className="btn btn-link btn-lg">
                 Login
               </button> :
-              <button onClick={() => setUser(null)} className="btn btn-link btn-lg">
+              <button onClick={() => logout()} className="btn btn-link btn-lg">
                 Logout
               </button>
           }

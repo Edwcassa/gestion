@@ -2,10 +2,10 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from '../component/Dashboard'
 import ErrorPage from '../pages/ErrorPage'
+import Perfil from '../pages/views/Perfil'
 
 export default function MainRouter() {
 
-  const Perfil = () => <h1>perfil</h1>
   const MisCursos = () => <h1>mis cursos</h1>
   const Curso_detalle = () => <h1>curso detallado</h1>
   const Historial = () => <h1>historial</h1>

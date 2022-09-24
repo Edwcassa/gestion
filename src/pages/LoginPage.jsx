@@ -49,8 +49,7 @@ export default function LoginPage() {
         setData(data)
         // console.log(data)
         if (data.ok) {
-          const { _id, nombre, esAdmin, img } = data.docenteDB
-          const userData = { _id, nombre, esAdmin, img }
+          const userData = data.docenteDB
           setUser(userData)
           setUserLocal(userData)
           navigate('/')

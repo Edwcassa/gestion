@@ -67,3 +67,11 @@ ul {
   background-blend-mode: darken;
 
 }
+
+.image_hover {
+  transition: .15s ease-out;
+}
+
+.image_hover:hover {
+  -webkit-filter: brightness(70%);
+}

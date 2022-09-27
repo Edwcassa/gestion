@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from '../component/Dashboard'
 import ErrorPage from '../pages/ErrorPage'
+import Cursos from '../pages/views/Cursos'
 import Perfil from '../pages/views/Perfil'
 
 export default function MainRouter() {
@@ -9,7 +10,6 @@ export default function MainRouter() {
   const MisCursos = () => <h1>mis cursos</h1>
   const Curso_detalle = () => <h1>curso detallado</h1>
   const Historial = () => <h1>historial</h1>
-  const Cursos = () => <h1>cursos</h1>
   const Docentes = () => <h1>docentes</h1>
   const AsignarHorarios = () => <h1>asignar horarios</h1>
   const Estadisticas = () => <h1>Estadisticas</h1>

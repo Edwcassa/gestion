@@ -21,6 +21,21 @@ export function useFetch(url) {
       })
   }, [url])
 
-  return { data, loading, error }
+  const refetch = () => {
+    setLoading(true)
+    axios
+      .get(url)
+      .then((response) => {
+        setData(response.data)
+      })
+      .catch((err) => {
+        setError(err.message)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  return { data, loading, error, refetch }
 
 }

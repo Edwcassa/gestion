@@ -55,7 +55,7 @@ export default function Docentes() {
     await axios.post('/docentes', values)
       .then(response => {
         if (response.data.ok) {
-          Swal.fire('Curso Creado!', 'enhorabuena', 'success')
+          Swal.fire('Docente Creado!', 'enhorabuena', 'success')
           setDocentes([...docentes, response.data.docente])
         }
       })
@@ -73,7 +73,7 @@ export default function Docentes() {
       .then(response => {
         if (response.data.ok) {
           // console.log('res',response.data.docente)
-          Swal.fire('Curso Editado!', 'enhorabuena', 'success')
+          Swal.fire('Docente Editado!', 'enhorabuena', 'success')
           const docenteidx = docentes.findIndex((e) => e._id === id)
           docentes[docenteidx] = {...docentes[docenteidx], ...response.data.docente}
         }
@@ -89,7 +89,7 @@ export default function Docentes() {
     await axios.delete(`/docentes/${id}`)
       .then(response => {
         if (response.data.ok) {
-          Swal.fire('Curso Eliminado!', 'enhorabuena', 'success')
+          Swal.fire('Docente Eliminado!', 'enhorabuena', 'success')
           setDocentes(docentes.filter((e) => e._id != id))
         }
       })
@@ -142,7 +142,7 @@ export default function Docentes() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Crea el curso</Modal.Title>
+          <Modal.Title>Crea un docente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* <pre>{JSON.stringify(values, undefined, 2)}</pre> */}
@@ -218,7 +218,7 @@ export default function Docentes() {
 
       <Modal show={showEdit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>
-          <Modal.Title>Edita el curso</Modal.Title>
+          <Modal.Title>Edita al docente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* <pre>{JSON.stringify(values, undefined, 2)}</pre> */}

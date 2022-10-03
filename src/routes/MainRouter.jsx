@@ -6,11 +6,11 @@ import Carga_Academica from '../pages/views/Carga_Academica'
 import Cursos from '../pages/views/Cursos'
 import Docentes from '../pages/views/Docentes'
 import Estadisticas from '../pages/views/Estadisticas'
+import Mis_Cursos from '../pages/views/Mis_Cursos'
 import Perfil from '../pages/views/Perfil'
 
 export default function MainRouter() {
 
-  const MisCursos = () => <h1>mis cursos</h1>
   const Curso_detalle = () => <h1>curso detallado</h1>
   const Historial = () => <h1>historial</h1>
 
@@ -18,7 +18,7 @@ export default function MainRouter() {
     <Dashboard>
       <Routes>
         <Route path='/' element={<Perfil />} />
-        <Route path='/mis_cursos' element={<MisCursos />} />
+        <Route path='/mis_cursos' element={<Mis_Cursos />} />
         <Route path='/mis_cursos/:courseId' element={<Curso_detalle />} />
         <Route path='/historial' element={<Historial />} />
         <Route path='/list_cursos' element={<Cursos />} />

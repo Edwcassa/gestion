@@ -75,3 +75,14 @@ ul {
 .image_hover:hover {
   -webkit-filter: brightness(70%);
 }
+
+.card__css {
+cursor: pointer;
+font-weight: 500;
+}
+.card__css:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card__css:hover p {
+  color: #1179f4;
+}

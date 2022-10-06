@@ -15,6 +15,23 @@ export default function Curso_Detalle() {
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  // Estados para el modal asistencia
+  const [show, setShow] = useState(false);
+  const handleClose = () => { setShow(false); }
+  const handleShow = () => setShow(true);
+
+  const [loadingPost, setLoadingPost] = useState(false)
+
+  // Estados para el modal plan sesiones
+  const [showplan, setShowplan] = useState(false);
+  const handleCloseplan = () => { setShowplan(false); }
+  const handleShowplan = () => setShowplan(true);
+
+  // Estados para el modal historial
+  const [showhistory, setShowhistory] = useState(false);
+  const handleClosehistory = () => { setShowhistory(false); }
+  const handleShowhistory = () => setShowhistory(true);
+
 
   // ************
   const getDataCurso = async () => {
@@ -28,6 +45,37 @@ export default function Curso_Detalle() {
   useEffect(() => {
     getDataCurso()
   }, [])
+
+  const registrarAsistencia = () => {
+    if (user === null) { Swal.fire('Debe iniciar sesion !!'); return }
+
+    setLoadingPost(true)
+    setTimeout(() => {
+      handleClose()
+      setLoadingPost(false)
+      Swal.fire('Ohh noo!', `Error 500`, 'error')
+    }, 2000)
+  }
+
+
+  const alumnos = [
+    'CASSA-LIPA-EDWAR YURI',
+    'CUSIHUAMAN-AUCCACUSI-LUIS ALDAIR',
+    'QUISPE-TITTO-JOEL WILLY',
+    'TINTAYA-TACO-YUREMA LISBETH',
+    'PEREIRA-CHINCHERO-RICHARD MIKHAEL',
+    'ESPEJO-FRANCO-MELISSA BRIGGITTE',
+    'VILLASANTE-LEON-AMARU',
+    'FARFAN_ENRIQUEZ-GABRIELA',
+    'ARCE-QUISPE-RUTH MILAGROS',
+    'CAHUATA-LAVILLA-YOLMY MILAGROS',
+    'HUAMAN-ATAYUPA-LISBET PAOLA',
+    'VILLALOBOS-QUISPE-PAMELA ARACELY',
+  ]
+
+  var f = new Date();
+  var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+  var hoy = diasSemana[f.getDay()] + ' ' + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()
 
 
   return (
@@ -86,30 +134,89 @@ export default function Curso_Detalle() {
             </div>
           </Col>
           <Col>
-          {
-            !loading && 
-            <div>
-              <h5>Mi plan de sesiones</h5>
-              <Button className='' variant="primary">
-                Plan de sesiones
-              </Button>
-              <br />
-              <br />
-              <br />
-              <h4>Asistencia diaria</h4>
-              <Button className='w-100' variant='success'>
-                Marcar Asistencia
-              </Button>
-              <br />
-              <br />
-              <Button className='w-100' variant='secondary'>Historial</Button>
-            </div>
-          }
+            {
+              !loading &&
+              <div>
+                <h5>Mi plan de sesiones</h5>
+                <Button onClick={handleShowplan} variant="primary">
+                  Plan de sesiones
+                </Button>
+                <br />
+                <br />
+                <br />
+                <h4>Asistencia diaria</h4>
+                <Button onClick={handleShow} className='w-100' variant='success'>
+                  Marcar Asistencia
+                </Button>
+                <br />
+                <br />
+                <Button onClick={handleShowhistory} className='w-100' variant='secondary'>
+                  Historial
+                </Button>
+              </div>
+            }
           </Col>
         </Row>
       </Container >
 
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <span>Asistencia</span>
+            <h5 className='text-danger'>{hoy}</h5>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>Lista</h5>
+          <Form>
+            {
+              alumnos.map((e, i) => (
+                <Form.Check key={i}
+                  id={e}
+                  label={e}
+                />
+              ))
+            }
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={() => registrarAsistencia()} disabled={loadingPost}>
+            {loadingPost ? 'Espere...' : 'Registrar'}
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
+
+      <Modal show={showplan} onHide={handleCloseplan}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <span>Plan de sesiones</span>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <strong>Unidad 1: INTRODUCCIÓN, TECNOLOGIAS</strong> <br />
+          <strong>Capitulo 1: Introducción a la programacion</strong> <br />
+          Tema 1: Definiciones <br />
+          Tema 2: Sectores y aplicaciones <br />
+          Tema 3: Sistemas de aplicaciones <br />
+          Tema 4: Conceptos Necesarios <br />
+          <strong>Capitulo 2: Analisis del computador</strong> <br />
+          Tema 1: Estructura de un computador <br />
+          Tema 2: Circuitos <br />
+          Tema 3: Recursividad <br />
+          Tema 4: Memoria del computador <br />
+          Tema 5: Transformaciones Compuestas <br />
+          <strong>Unidad 2: APLICACIONES</strong> <br />
+          Capitulo 1: Paginas web <br />
+          <strong></strong>
+          Tema 1: Introducción a react js <br />
+          Tema 2: Estados y Hooks <br />
+          Tema 3: useContext para valores globales <br />
+        </Modal.Body>
+      </Modal>
 
     </>
   )

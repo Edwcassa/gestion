@@ -5,6 +5,7 @@ import { Button, Card, Col, Container, Form, Modal, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import UseAuth from '../../auth/UseAuth'
+import Progress from '../../component/Progress'
 
 export default function Curso_Detalle() {
 
@@ -76,6 +77,10 @@ export default function Curso_Detalle() {
   var f = new Date();
   var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
   var hoy = diasSemana[f.getDay()] + ' ' + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
 
 
   return (
@@ -215,6 +220,26 @@ export default function Curso_Detalle() {
           Tema 1: Introducción a react js <br />
           Tema 2: Estados y Hooks <br />
           Tema 3: useContext para valores globales <br />
+        </Modal.Body>
+      </Modal>
+
+
+      <Modal size='lg' show={showhistory} onHide={handleClosehistory}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <span>HISTORIAL DE ASISTENCIA</span>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {
+            alumnos.map((e, i) => (
+              <>
+                <p className='ms-3'>{e}</p>
+                <Progress done={getRndInteger(50,101)} time={(i + 1) * 0.2} />
+              </>
+            ))
+          }
+
         </Modal.Body>
       </Modal>
 

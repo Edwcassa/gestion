@@ -7,12 +7,11 @@ import Cursos from '../pages/views/Cursos'
 import Curso_Detalle from '../pages/views/Curso_Detalle'
 import Docentes from '../pages/views/Docentes'
 import Estadisticas from '../pages/views/Estadisticas'
+import Historial from '../pages/views/Historial'
 import Mis_Cursos from '../pages/views/Mis_Cursos'
 import Perfil from '../pages/views/Perfil'
 
 export default function MainRouter() {
-
-  const Historial = () => <h1>historial</h1>
 
   return (
     <Dashboard>

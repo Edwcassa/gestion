@@ -24,13 +24,14 @@ export default function Perfil() {
   const [imgSelected, setImgSelected] = useState(null)
   const [updateImgLoad, setUpdateImgLoad] = useState(false)
 
-  //imagenes
+  //imagenes 
+  // https://postimg.cc/gallery/yB6g4BS/fdfec202
   const imagesProfile = [
-    { 'img': 'https://i.postimg.cc/zfc2wwJP/descargar-2-1.png' },
-    { 'img': 'https://i.postimg.cc/y6QtXSPR/aaaa-1.png' },
-    { 'img': 'https://i.postimg.cc/zDCZNMDz/ZEPETO-2.png' },
-    { 'img': 'https://i.postimg.cc/FHK2jHyz/descargar-3.png' },
-    { 'img': 'https://i.postimg.cc/xT5wJzbB/Dv-WFXNp-Vs-AAez-KJ-1.png' }
+    { 'img': 'https://i.postimg.cc/P5FVhcJn/descargar-2.png' },
+    { 'img': 'https://i.postimg.cc/RCcYfXsw/descargar-2-1.png' },
+    { 'img': 'https://i.postimg.cc/bwvV78zR/descargar-3.png' },
+    { 'img': 'https://i.postimg.cc/CL76rdV1/Dv-WFXNp-Vs-AAez-KJ-1.png' },
+    { 'img': 'https://i.postimg.cc/FsNBx388/ZEPETO-2.png' }
   ]
 
   // datos del usuario
@@ -43,6 +44,9 @@ export default function Perfil() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (user === null) { Swal.fire('Debe iniciar sesion !!'); return }
+
     setLoading(true)
     axios
       .put(`/docentes/${_id}`, values)
@@ -70,11 +74,13 @@ export default function Perfil() {
       .finally(() => setLoading(false));
   }
 
-  const updateImg = async() => {
+  const updateImg = async () => {
     if (!imgSelected) {
       Swal.fire('Selecciona una imagen')
       return
     }
+    if (user === null) { Swal.fire('Debe iniciar sesion !!'); return }
+
     setUpdateImgLoad(true)
     await axios
       .put(`/docentes/${_id}`, { 'img': imgSelected })
@@ -113,7 +119,7 @@ export default function Perfil() {
           <div className="card">
             <div className="card-body">
               <div className="d-flex flex-column align-items-center text-center">
-                <img src={img??"https://bootdey.com/img/Content/avatar/avatar7.png"} alt="Admin" className="rounded" width="150" />
+                <img src={img ?? "https://bootdey.com/img/Content/avatar/avatar7.png"} alt="Admin" className="rounded" width="150" />
                 <div className="mt-3">
                   <h4>{nombre ?? ''}</h4>
                   <span className="text-muted font-size-sm">{codDocente ?? ''}</span>
@@ -243,7 +249,7 @@ export default function Perfil() {
           <Modal.Title>Elige una foto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <pre>{JSON.stringify(imgSelected, undefined, 2)}</pre>
+          {/* <pre>{JSON.stringify(imgSelected, undefined, 2)}</pre> */}
           <div className='d-flex flex-row bd-highlight mb-3 justify-content-center'>
             {
               imagesProfile.map((e, i) => (
@@ -266,7 +272,7 @@ export default function Perfil() {
           <button className='btn btn-secondary' onClick={handleClose}>
             Cerrar
           </button>
-          <button className='btn btn-primary' onClick={()=>updateImg()} disabled={updateImgLoad}>
+          <button className='btn btn-primary' onClick={() => updateImg()} disabled={updateImgLoad}>
             {updateImgLoad && <i className='fa fa-spinner fa-spin me-2 '></i>}
             {updateImgLoad ? 'Espere...' : 'Actualizar Imagen'}
           </button>

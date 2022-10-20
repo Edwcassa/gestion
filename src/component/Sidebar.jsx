@@ -1,7 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import UseAuth from '../auth/UseAuth'
 
 export default function Sidebar() {
+
+  // datos del usuario
+  const { user } = UseAuth()
+
 
   const jsonRutas = [
     { "display_name": "Mi perfil", "route": "/", "icon": "fa-solid fa-user" },
@@ -19,10 +24,10 @@ export default function Sidebar() {
         <img src='https://i.postimg.cc/C1KdRcQd/logo.png' alt="company logo" />
       </div>
       <div className="user_name">
-        <p>null</p>
+        <p>{user ? user.nombre : 'invitado'}</p>
       </div>
       <div className="user_carga">
-        <p>null</p>
+        <p>{user ? (user.esAdmin) ? 'admin': 'regular' : 'invitado'}</p>
       </div>
       <div className="sidebar__links">
         {

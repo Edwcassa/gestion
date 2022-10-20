@@ -21,16 +21,17 @@ export default function Navbar() {
   const logout = () => {
     deleteUserLocal()
     setUser(null)
+    navigate('/')
   }
 
   return (
     <div className="navbar-contenido">
       <div className="navContent">
-        <div className='botons_users'>
+        <div className='botons_users w-75 mt-1'>
           {
-            !user && <div>
-              <button onClick={() => change()} type="button" className={`btn btn-light me-2 ${active && 'active'}`}>Vista Docente</button>
-              <button onClick={() => change()} type="button" className={`btn btn-light ${active2 && 'active'}`}>Admin</button>
+            !user &&
+            <div className='bg-invitado border w-100 rounded p-3 text-white'>
+              <span>Estas viendo como: <i className='fa fa-globe ms-1 me-3'></i>INVITADO</span>
             </div>
 
           }

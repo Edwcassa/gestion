@@ -3,7 +3,7 @@ import './App.css'
 import AuthProvider from './auth/AuthProvider'
 import AppRouter from './routes/AppRouter'
 
-axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
+axios.defaults.baseURL = "https://gestion-backend-631b.onrender.com/api/"
 
 function App() {
 

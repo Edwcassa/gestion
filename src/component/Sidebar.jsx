@@ -27,18 +27,48 @@ export default function Sidebar() {
         <p>{user ? user.nombre : 'invitado'}</p>
       </div>
       <div className="user_carga">
-        <p>{user ? (user.esAdmin) ? 'admin': 'regular' : 'invitado'}</p>
+        <p>{user ? (user.esAdmin) ? 'admin' : 'regular' : 'invitado'}</p>
       </div>
       <div className="sidebar__links">
         {
-          jsonRutas.map((item, index) => (
-            <NavLink to={item.route} key={index}>
-              <i className={item.icon}></i>
-              <span>
-                {item.display_name}
-              </span>
-            </NavLink>
-          ))
+          jsonRutas.map((item, index) => {
+            if (!user) {
+              return (
+                <NavLink to={item.route} key={index}>
+                  <i className={item.icon}></i>
+                  <span>
+                    {item.display_name}
+                  </span>
+                </NavLink>
+              )
+            }
+            else {
+              if (user.esAdmin) {
+                if (['Mi perfil', 'Lista de Cursos', 'Lista de Docentes', 'Carga Academica', 'Estadisticas'].includes(item.display_name)) {
+                  return (
+                    <NavLink to={item.route} key={index}>
+                      <i className={item.icon}></i>
+                      <span>
+                        {item.display_name}
+                      </span>
+                    </NavLink>
+                  )
+                }
+              }
+              else {
+                if (['Mi perfil', 'Mis cursos', 'Historial'].includes(item.display_name)) {
+                  return (
+                    <NavLink to={item.route} key={index}>
+                      <i className={item.icon}></i>
+                      <span>
+                        {item.display_name}
+                      </span>
+                    </NavLink>
+                  )
+                }
+              }
+            }
+          })
         }
       </div>
     </div>

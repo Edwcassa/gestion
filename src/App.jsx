@@ -3,7 +3,7 @@ import './App.css'
 import AuthProvider from './auth/AuthProvider'
 import AppRouter from './routes/AppRouter'
 
-axios.defaults.baseURL = "https://gestion-backend-631b.onrender.com/api/"
+axios.defaults.baseURL = "https://gestion-backend.vercel.app/api/"
 
 function App() {
 
